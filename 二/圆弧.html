@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="400" id="cas"></canvas>
+</body>
+<script>
+    function toAngle(redian) {
+        return redian * 180 / Math.PI;
+    }
+
+    function toRadian(angle) {
+        return angle * Math.PI / 180;
+    }
+    var cas = document.getElementById("cas");
+    var ctx = cas.getContext("2d");
+    var x = cas.width / 2,
+        y = cas.height / 2;
+    r = 100;
+    set = -60,
+        end = 120;
+    ctx.arc(x, y, r, toRadian(set), toRadian(end))
+        //ctx.stroke();
+    ctx.fill()
+</script>
+
+</html>

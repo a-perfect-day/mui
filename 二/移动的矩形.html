@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="400" id="cas"></canvas>
+</body>
+<script>
+    var cas = document.getElementById("cas");
+    var ctx = cas.getContext("2d");
+    var x = 100,
+        y = 100,
+        w = 100,
+        h = 100,
+        setp = 3;
+    var inner = setInterval(function() {
+        ctx.clearRect(x, y, w, h);
+        x += setp;
+        if (x >= 400) {
+            x = 400
+            clearInterval(inner)
+        }
+        ctx.fillRect(x, y, w, h);
+    }, 20)
+</script>
+
+</html>

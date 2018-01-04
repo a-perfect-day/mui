@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="1200" height="600" id="cas"></canvas>
+</body>
+<script>
+    var cas = document.getElementById("cas");
+    var ctx = cas.getContext("2d");
+
+    var data = [
+        [20, 15],
+        [15, 20],
+        [35, 10],
+        [30, 25],
+        [40, 30]
+    ];
+
+    //设置所有的边距离坐标系的距离
+    var padding = 30;
+
+    //设置原点的坐标
+
+    var x0 = padding,
+        y0 = cas.height - padding; //整个高度减去canvas于坐标轴的30间距
+
+    //设置箭头的长度
+    var arrowHeight = 20,
+        arrowWidth = 10;
+
+    //设置坐标轴的长度
+    //cas.width-padding总的长度减去两个边距的距离在减去箭头的高度
+    var maxX = cas.width - padding * 2 - arrowHeight,
+        maxY = cas.height - padding * 2 - arrowHeight;
+    //绘制直线
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0 + maxX + arrowHeight, y0);
+    ctx.moveTo(x0, y0);
+    ctx.lineTo(x0, y0 - maxY - arrowHeight);
+    ctx.stroke();
+    ctx.beginPath();
+
+    //绘制X箭头
+    ctx.moveTo(x0 + maxX + arrowHeight, y0);
+    ctx.lineTo(x0 + maxX, y0 - arrowWidth / 2);
+    ctx.lineTo(x0 + maxX + arrowHeight / 2, y0);
+    ctx.lineTo(x0 + maxX, y0 + arrowWidth / 2);
+    ctx.closePath();
+
+
+    //绘制Y轴
+    ctx.moveTo(x0, padding);
+    ctx.lineTo(x0 - arrowWidth / 2, padding + arrowHeight);
+    ctx.lineTo(x0, padding + arrowHeight / 2);
+    ctx.lineTo(x0 + arrowWidth / 2, padding + arrowHeight);
+    ctx.closePath();
+
+    ctx.fill();
+
+
+    //计算最大值，和比例
+    var dataMaX = Math.max.apply(null, data.map(function(v) {
+        return v[0]
+    }))
+    var dataMaY = Math.max.apply(null, data.map(function(v) {
+        return v[1]
+    }))
+    console.log(dataMaX + "," + dataMaY)
+
+
+    //绘制data中的点 使用循环绘制点
+    ctx.beginPath();
+    ctx.fillStyle = 'red';
+    for (var i = 0; i < data.length; i++) {
+
+
+        var tmpX = data[i][0],
+            tmpY = data[i][1];
+        // console.log(tmpX + "," + tmpY)
+
+        //实际在canvas中的坐标应该比上maxXY=数据中的坐标比上dataMaxXY
+        //实际坐标计算的话应该是数据坐标除以dataMaxXY然后乘以maxXY
+        //转换成canvas中的坐标
+        tmpX = tmpX * maxX / dataMaX;
+        tmpY = tmpY * maxY / dataMaY;
+
+
+        //将坐标轴的原点从左上角转换到坐标轴的原点
+        tmpX = tmpX + x0;
+        tmpY = y0 - tmpY;
+
+
+        //每一个点都是边长为8的小长方形data[i][0] i代表每一个点[0]是所有的X值，1代表的是Y值 因为边长是为8的值所以一开始要减去4
+        ctx.moveTo(tmpX - 4, tmpY - 4);
+        ctx.lineTo(tmpX + 4, tmpY - 4); //往横的方向画一道线段
+        ctx.lineTo(tmpX + 4, tmpY + 4); //竖着画一道线段
+        ctx.lineTo(tmpX - 4, tmpY + 4); //在回去 X又变成-4
+        ctx.closePath()
+    }
+    ctx.fill()
+</script>
+
+</html>

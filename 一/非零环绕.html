@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas width="1000" height="600" id="cas"></canvas>
+    </body>
+    <script>
+        var cas = document.getElementById("cas")
+        var xet = cas.getContext("2d");
+        xet.moveTo(100, 100);
+        xet.lineTo(400, 100);
+        xet.lineTo(400, 400);
+        xet.lineTo(100, 400);
+        xet.lineTo(100, 100);
+
+        xet.moveTo(150, 150);
+        xet.lineTo(150, 350);
+        xet.lineTo(350, 350);
+        xet.lineTo(350, 150);
+        xet.lineTo(150, 150);
+        xet.fill();
+
+
+        xet.moveTo(450, 100);
+        xet.lineTo(900, 100);
+        xet.lineTo(900, 400);
+        xet.lineTo(450, 400);
+        xet.lineTo(450, 100);
+
+
+        xet.moveTo(650, 150);
+        xet.lineTo(550, 250);
+        xet.lineTo(600, 250);
+        xet.lineTo(600, 350);
+        xet.lineTo(700, 350);
+        xet.lineTo(700, 250);
+        xet.lineTo(750, 250);
+        xet.lineTo(650, 150);
+
+
+        xet.stroke()
+        xet.fill()
+    </script>
+
+    </html>
+</body>
+
+</html>

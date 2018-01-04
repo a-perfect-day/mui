@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Document</title>
+        <style>
+            canvas {
+                border: 1px solid #ccc;
+            }
+        </style>
+    </head>
+
+    <body>
+        <canvas width="900" height="600" id="cas"></canvas>
+    </body>
+    <script>
+        var cas = document.getElementById("cas")
+        var xet = cas.getContext("2d");
+
+
+        var timeX = 3,
+            timeY = timeX * 2 / 3;
+        stateX = 0, stateY = 0;
+        while (true) {
+            if (stateX >= 900 || stateY >= 600) break;
+            xet.moveTo(stateX, stateY);
+            xet.lineTo(stateX += timeX, stateY += timeY);
+            stateX += timeX;
+            stateY += timeY;
+        }
+        xet.stroke();
+    </script>
+
+    </html>
+</body>
+
+</html>

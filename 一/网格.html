@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="900" height="600" id="cas"></canvas>
+    <script>
+        var cas = document.getElementById("cas");
+        var ctx = cas.getContext("2d");
+        var width = 20;
+        var rows = cas.height / width; //行数 整个高度除以一个小盒子的宽度
+        var cols = cas.width / width; //列数 整个宽度除以一个小盒子的宽度
+        for (var i = 0; i < rows; i++) {
+            for (var j = 0; j < cols; j++) {
+                ctx.moveTo(j * width, (i + 1) * width);
+                ctx.lineTo(j * width + width, (i + 1) * width);
+
+                ctx.lineTo(j * width + width, i * width) //不加1相当于减一 就绘制到上面了
+            }
+        }
+        ctx.stroke()
+    </script>
+</body>
+
+</html>

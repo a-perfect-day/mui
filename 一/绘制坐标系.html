@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="900" height="600" id="cas"></canvas>
+</body>
+<script>
+    var cas = document.getElementById("cas");
+    var ctx = cas.getContext("2d");
+    var paddingLeft = 30,
+        paddingRight = 30,
+        paddingTop = 30,
+        paddingBottom = 30;
+
+    var arrowWidth = 10,
+        arrowHeight = 20;
+
+    var x0 = paddingLeft,
+        y0 = cas.height - paddingBottom;
+
+    //绘制坐标线轴
+    ctx.moveTo(x0, paddingTop);
+    ctx.lineTo(x0, y0);
+    ctx.lineTo(cas.width - paddingRight, y0)
+    ctx.stroke()
+    ctx.beginPath();
+
+    //绘制X轴箭头
+    ctx.moveTo(cas.width - paddingRight, y0);
+    ctx.lineTo(cas.width - paddingRight - arrowHeight, y0 - arrowWidth / 2);
+    ctx.lineTo(cas.width - paddingRight - arrowHeight / 2, y0);
+    ctx.lineTo(cas.width - paddingRight - arrowHeight, y0 + arrowWidth / 2);
+    ctx.closePath();
+
+    //绘制Y轴箭头
+    ctx.moveTo(paddingLeft, paddingTop);
+    ctx.lineTo(paddingLeft - arrowWidth / 2, paddingTop + arrowHeight);
+    ctx.lineTo(paddingLeft, paddingTop + arrowHeight / 2);
+    ctx.lineTo(paddingLeft + arrowWidth / 2, paddingTop + arrowHeight);
+    ctx.closePath();
+    ctx.fill();
+
+    ctx.beginPath();
+
+    var width = cas.width - paddingLeft - paddingRight - arrowHeight,
+        height = cas.height - paddingBottom - paddingTop - arrowWidth;
+    console.log(width + "," + height)
+    var x = width * 0.5,
+        y = height * 0.5;
+    console.log(x + "," + y)
+    x = x0 + x;
+    y = y0 - y;
+    console.log(x + "," + y)
+    var pointwidth = 8;
+    ctx.fillStyle = "red";
+
+    ctx.moveTo(x - pointwidth / 2, y - pointwidth / 2);
+    ctx.lineTo(x + pointwidth / 2, y - pointwidth / 2);
+    ctx.lineTo(x + pointwidth / 2, y + pointwidth / 2);
+    ctx.lineTo(x - pointwidth / 2, y + pointwidth / 2);
+    ctx.closePath();
+    ctx.fill()
+</script>
+
+</html>

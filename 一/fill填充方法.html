@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="1000" height="600" id="cas"></canvas>
+</body>
+<script>
+    var cas = document.getElementById("cas")
+    var xet = cas.getContext("2d");
+    //矩形
+    xet.moveTo(50, 100);
+    xet.lineTo(100, 100);
+    xet.lineTo(100, 150);
+    xet.lineTo(50, 150);
+    xet.lineTo(50, 100);
+
+
+    //三角形
+    xet.moveTo(150, 100);
+    xet.lineTo(150, 150);
+    xet.lineTo(200, 150);
+    xet.lineTo(150, 100);
+
+
+    //多边矩形
+    xet.moveTo(250, 100);
+    xet.lineTo(250, 150);
+    xet.lineTo(300, 150);
+    xet.lineTo(280, 100);
+    xet.lineTo(250, 100)
+
+
+    xet.fill();
+</script>
+
+</html>

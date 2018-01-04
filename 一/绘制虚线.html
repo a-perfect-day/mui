@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas {
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <canvas width="600" height="300" id="cas"></canvas>
+</body>
+<script>
+    var cas = document.getElementById("cas")
+    var xet = cas.getContext("2d");
+    var temp = 10
+    state = 100;
+    while (true) {
+        if (state >= 500) break;
+        xet.moveTo(state, 100);
+        xet.lineTo(state += temp, 100);
+        state += temp
+    }
+    xet.stroke()
+</script>
+
+</html>
